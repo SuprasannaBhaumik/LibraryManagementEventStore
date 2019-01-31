@@ -18,6 +18,7 @@ import java.time.ZoneOffset;
 import java.util.UUID;
 
 @Slf4j
+@Transactional(readOnly=true)
 public class DomainEventService {
 
 	private final DomainEventsRepository domainEventsRepository;
@@ -47,11 +48,12 @@ public class DomainEventService {
     }
 
     @Transactional
-    public void processDomainEvent( final Tuple event ) {
-        log.debug( "processDomainEvent : enter" );
-        log.debug( "processDomainEvent : event[{}] ", event );
+    public void processDomainEvent(final Tuple event) {
+    	
+        log.debug("processDomainEvent : enter");
+        log.debug("processDomainEvent : event[{}] ", event);
 
-        String eventType = event.getString( "eventType" );
+        String eventType = event.getString("eventType");
         
         switch (eventType) {
             case "UserInitialized":
@@ -62,8 +64,8 @@ public class DomainEventService {
                 break;
         }
         
-        log.debug( "processDomainEvent : calling publisher.sendNotification( event )" );
-        
+        log.debug( "processDomainEvent : calling publisher.sendNotification(event)" );
+        //sending the message to kafka queue, which will be consumed by the listeners
         this.publisher.sendNotification(event);
         log.debug( "processDomainEvent : exit" );
     }

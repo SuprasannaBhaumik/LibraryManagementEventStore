@@ -31,7 +31,7 @@ public class EventStoreController {
 	@PostMapping("/createUser")
 	public ResponseEntity saveEvent(@RequestBody String json) {
 		log.info("inside saveEvent -> called from another microservice");
-        Tuple event = TupleBuilder.fromString( json );
+        Tuple event = TupleBuilder.fromString(json);
         Assert.isTrue(event.hasFieldName("eventType"), "eventType is required");
         Assert.isTrue(event.hasFieldName("userId"), "userId is required");
         Assert.isTrue(event.hasFieldName("occurredOn"), "occurredOn is required");
@@ -39,7 +39,7 @@ public class EventStoreController {
         return ResponseEntity.accepted().build();
     }
 
-    @GetMapping( "/{userId}" )
+    @GetMapping("/{userId}")
     public ResponseEntity domainEvents(@PathVariable("userId") UUID userId) {
     	log.info("inside domainEvents -> called from another microservice");
         return ResponseEntity
