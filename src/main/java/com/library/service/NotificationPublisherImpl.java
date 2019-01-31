@@ -6,7 +6,8 @@ import org.springframework.integration.annotation.Publisher;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.tuple.Tuple;
-import org.springframework.tuple.TupleToJsonStringConverter;
+
+import com.library.util.TupleToJsonStringConverter;
 
 import lombok.extern.slf4j.Slf4j;
 

@@ -1,13 +1,13 @@
 package com.library.service;
 
-import org.springframework.tuple.JsonStringToTupleConverter;
 import org.springframework.tuple.Tuple;
-import org.springframework.tuple.TupleToJsonStringConverter;
 
 import com.library.model.DomainEventEntity;
 import com.library.model.DomainEvents;
 import com.library.model.DomainEventsEntity;
 import com.library.repository.DomainEventsRepository;
+import com.library.util.JsonStringToTupleConverter;
+import com.library.util.TupleToJsonStringConverter;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.annotation.Transactional;
