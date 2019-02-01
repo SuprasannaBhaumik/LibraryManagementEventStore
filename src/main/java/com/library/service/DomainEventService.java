@@ -71,10 +71,12 @@ public class DomainEventService {
     }
 
     private void processUserInitialized(final Tuple event) {
-        log.debug("processUserInitialized : enter");
+        log.info("processUserInitialized : enter");
 
         String userId = event.getString( "userId");
-        Instant occurredOn = Instant.parse(event.getString("occurredOn"));
+        String occuredOnString = event.getString("occurredOn");
+        log.info(occuredOnString);
+        Instant occurredOn = Instant.parse(occuredOnString);
 
         DomainEventsEntity domainEventsEntity = new DomainEventsEntity(userId);
         DomainEventEntity domainEventEntity = new DomainEventEntity();

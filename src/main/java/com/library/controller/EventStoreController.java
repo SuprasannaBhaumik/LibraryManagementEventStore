@@ -18,7 +18,7 @@ import com.library.service.DomainEventService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping
 @Slf4j
 public class EventStoreController {
 
